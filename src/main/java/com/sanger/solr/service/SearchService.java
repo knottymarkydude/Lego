@@ -24,16 +24,19 @@ public class SearchService {
 
     org.slf4j.Logger logger = LoggerFactory.getLogger(getClass());
 
+    public SearchService() {
+    }
+    
     @Autowired
     Config config;
 
     public QueryResponse getSearchResponse(ModifiableSolrParams solrParams) {
         QueryResponse response = null;
         
-        SolrCloudConnect solrConnect = new SolrCloudConnect(config.getCollections().get(0));
+        SolrCloudConnect solrConnect = new SolrCloudConnect("lego");
 
         try {
-            solrConnect.query(solrParams);
+            response = solrConnect.query(solrParams);
 
         } catch (SolrServerException | IOException ex) {
             logger.error("Exception" + ex);

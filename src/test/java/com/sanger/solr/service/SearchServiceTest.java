@@ -56,8 +56,8 @@ public class SearchServiceTest {
     @Test
     public void testGetSearchResponse() {
         logger.info("getSearchResponse");
-        QueryResponse expResult = null;
-        QueryResponse result = null;
+        QueryResponse expResult = new QueryResponse();
+        QueryResponse result = new QueryResponse();
         
         try {
             result = searchService.getSearchResponse(solrParams);
