@@ -28,10 +28,6 @@ the Environment properties.
 eg, in Application.class file
 @EnableConfigurationProperties(Config.class)
 
-
-
-
-
 | Annotation | Meaning                                             |
 +------------+-----------------------------------------------------+
 | @Component | generic stereotype for any Spring-managed component |
