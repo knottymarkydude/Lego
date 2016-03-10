@@ -18,7 +18,6 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author mw8
  */
-//@Component
 @Configuration
 @EnableConfigurationProperties
 @ConfigurationProperties(prefix = "environments")

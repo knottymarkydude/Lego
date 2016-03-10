@@ -1,7 +1,7 @@
 environments:
     collections: 
       - lego
-      - legoDev
+      - spar
     
     servers:
       - http://web-solrcloudspardev-01.internal.sanger.ac.uk:8080/
