@@ -5,10 +5,12 @@
  */
 package com.sanger.solr.service;
 
+import com.sanger.model.search.QueryForm;
 import com.sanger.solr.Application;
 import com.sanger.solr.config.Config;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.response.SolrPingResponse;
+import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.params.ModifiableSolrParams;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +34,7 @@ public class SearchServiceTest {
 
     @Autowired
     private Config config;
-    
+
     SearchService searchService;
 
     private static final String WT = "json";
@@ -40,27 +42,24 @@ public class SearchServiceTest {
     private static final String JSONNL = "map";
     private static final String FACETMINCOUNT = "1";
     private String QUERY = "CGP";
-    private static final String STARTDOC = "0";
-    private static final String ROWS = "10";
+    private static final Integer STARTDOC = 0;
+    private static final Integer ROWS = 10;
     private String collection;
 
-    ModifiableSolrParams solrParams;
+    QueryForm queryForm;
 
     public SearchServiceTest() {
     }
 
     @Before
     public void setUp() {
-        solrParams = new ModifiableSolrParams();
-        solrParams.set("q", QUERY);
-        //solrParams.set("rows", ROWS);
-        //solrParams.set("wt", WT);
-        solrParams.set("start", STARTDOC);
-        solrParams.set("qt", QT);
-        //solrParams.set("json.nl", JSONNL);
+        queryForm = new QueryForm();
+        queryForm.setQ(QUERY);
+        queryForm.setRows(ROWS);
+        queryForm.setStart(STARTDOC);
 
         collection = config.getCollections().get(0);
-        
+
         searchService = new SearchService(collection);
 
     }
@@ -72,16 +71,16 @@ public class SearchServiceTest {
     public void testGetSearchResponse() {
         logger.info("getSearchResponse");
         int expResult = 4;
-        QueryResponse result = new QueryResponse();
+        SolrDocumentList result = new SolrDocumentList();
 
         try {
-            result = searchService.getSearchResponse(solrParams);
+            result = searchService.getResults(queryForm);
             logger.info("Results: " + result.toString());
         } catch (Exception ex) {
             logger.error("Exception: " + ex);
         }
 
-        assertEquals(expResult, result.getResults().getNumFound());
+        assertEquals(expResult, result.getNumFound());
     }
 
     /**

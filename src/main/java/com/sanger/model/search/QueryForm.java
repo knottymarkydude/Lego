@@ -19,8 +19,9 @@ public class QueryForm {
     
     @NotEmpty(message = "Query is empty.")
     private String q;
-    @NotNull
+    
     private Integer start;
+    @NotNull
     private Integer rows;
 
     public String getQ() {

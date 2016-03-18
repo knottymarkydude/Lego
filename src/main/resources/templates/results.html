@@ -27,38 +27,28 @@
         <!--[if lt IE 8]>
                 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
+
 
         <div class="container">
-            <form action="#" th:action="@{/search}" th:object="${queryForm}" method="post">
-                
-                <table>
-                    <tr>
-                        <td>Search</td>
-                        <td><input type="text" th:field="*{q}" /></td>
-                        <td th:if="${#fields.hasErrors('q')}" th:errors="*{q}">Query error message</td>
-                    </tr>
-                    <tr>
-                        <td>Start:</td>
-                        <td><input type="text" th:field="*{start}" /></td>
-                        <td th:if="${#fields.hasErrors('start')}" th:errors="*{start}">Start error message</td>
-                    </tr>
-                    <tr>
-                        <td>Rows:</td>
-                        <td><input type="text" th:field="*{rows}" /></td>
-                        <td th:if="${#fields.hasErrors('rows')}" th:errors="*{rows}">Rows error message</td>
-                    </tr>
-                    <tr>
-                        <td><button type="submit">Submit post</button></td>
-                    </tr>
-                </table>
+            <div class='searchresults' th:unless="${#lists.isEmpty(response)}">
 
-            </form>
+                <p th:text="'Search Term: ' + ${q}"></p>
+
+                <div th:each="doc : ${response}" class="list-group list-results" id="results">
+                    <div class="list-group-item result-item">
+                        <h3 th:text="${doc.filename}"></h3>
+                        <div class="list-group-item result-item">
+                            <span th:text="${doc.highlight}"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
 
         <footer th:replace="fragments/headerfooter :: footer">
-             <!-- ============================================================================ -->
+            <!-- ============================================================================ -->
             <!-- This content is only used for static prototyping purposes (natural templates)-->
             <!-- and is therefore entirely optional, as this markup fragment will be included -->
             <!-- from "fragments/header.html" at runtime.                                     -->

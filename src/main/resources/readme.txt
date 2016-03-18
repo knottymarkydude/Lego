@@ -1,3 +1,5 @@
+LEGO (Legal Ethics Governance Office)
+
 To run the app from Gradle
 
 // This will start up a Tomcat instance

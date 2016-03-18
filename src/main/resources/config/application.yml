@@ -15,8 +15,8 @@ server:
 
 info:
     app:
-        name: Lego Service
-        description: ${info.app.name} that searches the Legal Departments document repository
+        name: Lego
+        description: ${info.app.name} that searches the Legal Departments document repository (Legal Ethics Governance Office)
     build:
         name: lego
         version: 0.0.1
