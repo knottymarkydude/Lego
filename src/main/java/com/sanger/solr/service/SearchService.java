@@ -6,10 +6,8 @@
 package com.sanger.solr.service;
 
 import com.sanger.model.search.QueryForm;
-import com.sanger.solr.service.model.ResultDocument;
 import com.sanger.solr.service.model.SearchResults;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +15,6 @@ import java.util.Set;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.response.SolrPingResponse;
-import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.params.ModifiableSolrParams;
 import org.search.solr.connect.SolrCloudConnect;

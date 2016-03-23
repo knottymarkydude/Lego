@@ -5,14 +5,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
-        <header th:replace="fragments/headerfooter :: header">
-            <!-- ============================================================================ -->
-            <!-- This content is only used for static prototyping purposes (natural templates)-->
-            <!-- and is therefore entirely optional, as this markup fragment will be included -->
-            <!-- from "fragments/header.html" at runtime.                                     -->
-            <!-- ============================================================================ -->
-            <div class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
+        <div class="container">
+            <header th:replace="fragments/headerfooter :: header">
+                <!-- ============================================================================ -->
+                <!-- This content is only used for static prototyping purposes (natural templates)-->
+                <!-- and is therefore entirely optional, as this markup fragment will be included -->
+                <!-- from "fragments/header.html" at runtime.                                     -->
+                <!-- ============================================================================ -->
+                <div class="navbar navbar-default navbar-fixed-top">               
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#">Static header</a>
                     </div>
@@ -22,52 +22,57 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </header>
-        <!--[if lt IE 8]>
-                <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
+            </header>
+            <!--[if lt IE 8]>
+                    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
 
-        <div class="container">
-            <form action="#" th:action="@{/search}" th:object="${queryForm}" method="post">
+
+            <div class="panel panel-default">
+
+
+                <p>
+                    Enter search term in the box above, and click the search icon.
+                </p>
+
                 
-                <table>
-                    <tr>
-                        <td>Search</td>
-                        <td><input type="text" th:field="*{q}" /></td>
-                        <td th:if="${#fields.hasErrors('q')}" th:errors="*{q}">Query error message</td>
-                    </tr>
-                    <tr>
-                        <td>Start:</td>
-                        <td><input type="text" th:field="*{start}" /></td>
-                        <td th:if="${#fields.hasErrors('start')}" th:errors="*{start}">Start error message</td>
-                    </tr>
-                    <tr>
-                        <td>Rows:</td>
-                        <td><input type="text" th:field="*{rows}" /></td>
-                        <td th:if="${#fields.hasErrors('rows')}" th:errors="*{rows}">Rows error message</td>
-                    </tr>
-                    <tr>
-                        <td><button type="submit">Submit post</button></td>
-                    </tr>
-                </table>
+                <!--<form action="#" th:action="@{/search}" th:object="${queryForm}" method="post">
 
-            </form>
-        </div>
+                    <table>
+                        <tr>
+                            <td>Search</td>
+                            <td><input type="text" th:field="*{q}" /></td>
+                            <td th:if="${#fields.hasErrors('q')}" th:errors="*{q}">Query error message</td>
+                        </tr>
+                        <tr>
+                            <td>Start:</td>
+                            <td><input type="text" th:field="*{start}" /></td>
+                            <td th:if="${#fields.hasErrors('start')}" th:errors="*{start}">Start error message</td>
+                        </tr>
+                        <tr>
+                            <td>Rows:</td>
+                            <td><input type="text" th:field="*{rows}" /></td>
+                            <td th:if="${#fields.hasErrors('rows')}" th:errors="*{rows}">Rows error message</td>
+                        </tr>
+                        <tr>
+                            <td><button type="submit">Submit post</button></td>
+                        </tr>
+                    </table>
 
-
-        <footer th:replace="fragments/headerfooter :: footer">
-             <!-- ============================================================================ -->
-            <!-- This content is only used for static prototyping purposes (natural templates)-->
-            <!-- and is therefore entirely optional, as this markup fragment will be included -->
-            <!-- from "fragments/header.html" at runtime.                                     -->
-            <!-- ============================================================================ -->
-            <div id="footer" class="panel panel-default">
-                <p>Wellcome Trust Sanger Institute, Genome Research Limited (reg no. 2742969)</p>
-                <p>LEGO V0.0.1 SNAPSHOT 2016 Static</p>
+                </form>-->
             </div>
-        </footer>
 
+            <footer th:replace="fragments/headerfooter :: footer">
+                <!-- ============================================================================ -->
+                <!-- This content is only used for static prototyping purposes (natural templates)-->
+                <!-- and is therefore entirely optional, as this markup fragment will be included -->
+                <!-- from "fragments/header.html" at runtime.                                     -->
+                <!-- ============================================================================ -->
+                <div id="footer" class="panel panel-default">
+                    <p>Wellcome Trust Sanger Institute, Genome Research Limited (reg no. 2742969)</p>
+                    <p>LEGO V0.0.1 SNAPSHOT 2016 Static</p>
+                </div>
+            </footer>
+        </div>
     </body>
 </html>

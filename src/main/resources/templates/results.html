@@ -5,59 +5,60 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
-        <header th:replace="fragments/headerfooter :: header">
-            <!-- ============================================================================ -->
-            <!-- This content is only used for static prototyping purposes (natural templates)-->
-            <!-- and is therefore entirely optional, as this markup fragment will be included -->
-            <!-- from "fragments/header.html" at runtime.                                     -->
-            <!-- ============================================================================ -->
-            <div class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Static header</a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!--[if lt IE 8]>
-                <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-
         <div class="container">
-            <div class='searchresults' th:unless="${#lists.isEmpty(response)}">
-
-                <p th:text="'Search Term: ' + ${q}"></p>
-
-                <div th:each="doc : ${response}" class="list-group list-results" id="results">
-                    <div class="list-group-item result-item">
-                        <h3 th:text="${doc.filename}"></h3>
-                        <div class="list-group-item result-item">
-                            <span th:text="${doc.highlight}"></span>
+            <header th:replace="fragments/headerfooter :: header">
+                <!-- ============================================================================ -->
+                <!-- This content is only used for static prototyping purposes (natural templates)-->
+                <!-- and is therefore entirely optional, as this markup fragment will be included -->
+                <!-- from "fragments/header.html" at runtime.                                     -->
+                <!-- ============================================================================ -->
+                <div class="navbar navbar-default navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">Static header</a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+            </header>
+            <!--[if lt IE 8]>
+                    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
 
+            <div class="panel panel-default">
+                <div class='searchresults' th:unless="${#lists.isEmpty(response)}">
+
+                    <p th:text="'Search Term: ' + ${q}"></p>
+                    
+                    <p th:text="'Number of Results: ' + ${numFound}"></p>
+                    
+                    <div th:each="doc : ${response}" class="list-group list-results" id="results">
+                        <div class="list-group-item result-item">
+                            <h3 th:text="${doc.filename}"></h3>
+                            <div class="list-group-item result-item">
+                                <span th:text="${doc.highlight}"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
-        </div>
 
-
-        <footer th:replace="fragments/headerfooter :: footer">
-            <!-- ============================================================================ -->
-            <!-- This content is only used for static prototyping purposes (natural templates)-->
-            <!-- and is therefore entirely optional, as this markup fragment will be included -->
-            <!-- from "fragments/header.html" at runtime.                                     -->
-            <!-- ============================================================================ -->
-            <div id="footer" class="panel panel-default">
-                <p>Wellcome Trust Sanger Institute, Genome Research Limited (reg no. 2742969)</p>
-                <p>LEGO V0.0.1 SNAPSHOT 2016 Static</p>
-            </div>
-        </footer>
-
+            <footer th:replace="fragments/headerfooter :: footer">
+                <!-- ============================================================================ -->
+                <!-- This content is only used for static prototyping purposes (natural templates)-->
+                <!-- and is therefore entirely optional, as this markup fragment will be included -->
+                <!-- from "fragments/header.html" at runtime.                                     -->
+                <!-- ============================================================================ -->
+                <div id="footer" class="panel panel-default">
+                    <p>Wellcome Trust Sanger Institute, Genome Research Limited (reg no. 2742969)</p>
+                    <p>LEGO V0.0.1 SNAPSHOT 2016 Static</p>
+                </div>
+            </footer>
+        </div><!-- container -->
     </body>
 </html>

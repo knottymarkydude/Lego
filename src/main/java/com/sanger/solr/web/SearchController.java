@@ -8,11 +8,9 @@ package com.sanger.solr.web;
 import com.sanger.model.search.QueryForm;
 import com.sanger.solr.config.Config;
 import com.sanger.solr.service.SearchService;
-import java.util.List;
 import javax.validation.Valid;
-import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
-import org.apache.solr.common.params.ModifiableSolrParams;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
+ * Controller for Search function
+ * 
  * @author mw8
  */
 @Controller
@@ -42,37 +42,47 @@ public class SearchController {
     public SearchController() {
         searchService = new SearchService("lego");
     }
-
-    /**
-    @ModelAttribute("queryFormBean")
-    public QueryForm createQueryForm() {
-        logger.debug("Creating Query Form");
-        return new QueryForm();
-    }**/
+      
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String getHomePage(Model model) {
+        QueryForm queryForm = new QueryForm();
+        queryForm.setStart(0);
+        queryForm.setRows(10);
+        model.addAttribute("queryForm", queryForm);
+        model.addAttribute("message", "Lego Application working");
+        return "index";
+    } 
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String search(QueryForm queryForm) {
+    public String search(Model model) {
+        QueryForm queryForm = new QueryForm();
+        queryForm.setStart(0);
+        queryForm.setRows(10);
+        model.addAttribute("queryForm", queryForm);
         return "search";
     }
-
+    
     @RequestMapping(value = "/search", method = RequestMethod.POST)
-    public String newSearch(@Valid QueryForm queryForm, BindingResult bindingResult, Model model) {
+    public String searchSubmit(@Valid QueryForm queryForm, BindingResult bindingResult, Model model) {
         logger.debug("newSearch");
         logger.debug("bindingResult" + bindingResult);
         if (bindingResult.hasErrors()) {
             logger.debug("hasErrors");
             return "search";
         }
-
-        logger.info("queryForm:::" + queryForm.toString());
+        
+        logger.debug("queryForm:::" + queryForm.toString());
         
         SolrDocumentList solrDocumentList = searchService.getResults(queryForm);
-        logger.info("Results: " + solrDocumentList.toString());
+        logger.debug("Results: " + solrDocumentList.toString());
+        for(SolrDocument solrDoc : solrDocumentList){
+            //logger.debug("HL Field" + solrDoc.);
+        }
+        
         
         model.addAttribute("response", solrDocumentList);
         model.addAttribute("numFound", solrDocumentList.getNumFound());
-        model.addAttribute("start", solrDocumentList.getStart());
-        model.addAttribute("rows", queryForm.getRows());
+        model.addAttribute("queryForm", queryForm);
         model.addAttribute("q", queryForm.getQ());
         return "results";
     }

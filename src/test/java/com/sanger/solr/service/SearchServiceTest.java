@@ -41,7 +41,7 @@ public class SearchServiceTest {
     private static final String QT = "/tika";
     private static final String JSONNL = "map";
     private static final String FACETMINCOUNT = "1";
-    private String QUERY = "CGP";
+    private String QUERY = "zibzob";
     private static final Integer STARTDOC = 0;
     private static final Integer ROWS = 10;
     private String collection;
@@ -70,7 +70,7 @@ public class SearchServiceTest {
     @Test
     public void testGetSearchResponse() {
         logger.info("getSearchResponse");
-        int expResult = 4;
+        int expResult = 0;
         SolrDocumentList result = new SolrDocumentList();
 
         try {

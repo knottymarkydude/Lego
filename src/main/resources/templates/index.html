@@ -3,56 +3,87 @@
     <head th:replace="fragments/headTag :: headTag">
         <title>Lego :: Legal Ethics Governence Office repository - static</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </head>
     <body>
-        <header th:replace="fragments/headerfooter :: header">
-            <!-- ============================================================================ -->
-            <!-- This content is only used for static prototyping purposes (natural templates)-->
-            <!-- and is therefore entirely optional, as this markup fragment will be included -->
-            <!-- from "fragments/header.html" at runtime.                                     -->
-            <!-- ============================================================================ -->
-            <div class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Static header</a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!--[if lt IE 8]>
-                <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-
         <div class="container">
-            <div class="hero-unit">
-                <h1 th:text="${message}"></h1>
-                <p>
-                    Lego stands for (Legal Ethics Genome Office).
+            <header th:replace="fragments/headerfooter :: header">
+                <!-- ============================================================================ -->
+                <!-- This content is only used for static prototyping purposes (natural templates)-->
+                <!-- and is therefore entirely optional, as this markup fragment will be included -->
+                <!-- from "fragments/header.html" at runtime.                                     -->
+                <!-- ============================================================================ -->
+                <div class="navbar navbar-static">
+
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="nav-collapse collase">
+                        <ul class="nav navbar-nav">  
+                            <li><a href="/" class="active"><i class="glyphicon glyphicon-home"></i> Lego</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-tower"></i> About Us</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-wrench"></i> Support</a></li>
+                        </ul>
+
+                        <form class="navbar-form navbar-right" action="#" th:action="@{/search}" th:object="${queryForm}" method="post">
+                            <div class="form-group" style="display:inline">
+                                <div class="input-group">
+                                    <input type="text" th:field="*{q}" class="form-control" placeholder="Search" />
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-search" ></span></span>
+                                    <span th:if="${#fields.hasErrors('q')}" th:errors="*{q}">Query error message</span>
+                                    <input type="hidden" th:field="*{rows}" />
+                                    <input type="hidden" th:field="*{start}" />
+                                </div>
+                            </div>
+                        </form> 
+                    </div>		
+                </div><!-- /.navbar -->
+            </header>
+            <!--[if lt IE 8]>
+                    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <![endif]-->
+
+
+
+            <div class="panel panel-default">
+                <h1>Legal Ethics Genome Office</h1>
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, 
+                    ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat 
+                    eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, 
+                    wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis 
+                    pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam 
+                    erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
                 </p>
-                <p>
-                    <a href="/search" th:href="@{/signup}" class="btn btn-large btn-success">Search</a>
+                
+                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, 
+                    ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat 
+                    eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, 
+                    wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis 
+                    pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam 
+                    erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus
                 </p>
+               
             </div>
-        </div>
 
+            <p id="test" th:text="'Lego: ' + ${message} + '!'" />
 
-        <footer th:replace="fragments/headerfooter :: footer">
-             <!-- ============================================================================ -->
-            <!-- This content is only used for static prototyping purposes (natural templates)-->
-            <!-- and is therefore entirely optional, as this markup fragment will be included -->
-            <!-- from "fragments/header.html" at runtime.                                     -->
-            <!-- ============================================================================ -->
-            <div id="footer" class="panel panel-default">
-                <p>Wellcome Trust Sanger Institute, Genome Research Limited (reg no. 2742969)</p>
-                <p>LEGO V0.0.1 SNAPSHOT 2016 Static</p>
-            </div>
-        </footer>
+            <footer th:replace="fragments/headerfooter :: footer">
+                <!-- ============================================================================ -->
+                <!-- This content is only used for static prototyping purposes (natural templates)-->
+                <!-- and is therefore entirely optional, as this markup fragment will be included -->
+                <!-- from "fragments/header.html" at runtime.                                     -->
+                <!-- ============================================================================ -->
+                <div id="footer" class="panel panel-default">
+                    <p>Wellcome Trust Sanger Institute, Genome Research Limited (reg no. 2742969)</p>
+                    <p>LEGO V0.0.1 SNAPSHOT 2016 Static</p>
+                </div>
+            </footer>
 
+        </div><!-- Container -->
     </body>
 </html>
