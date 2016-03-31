@@ -1,0 +1,29 @@
+/* 
+    Created on : 31-Mar-2016, 14:17:41
+    Author     : Mark Wilson
+    Custom CSS 
+*/
+
+html{
+    color: #d43f3a;
+}
+
+div.list-results{
+    margin: 4px 0px 0px 5px;
+    
+}
+
+div.result-item{
+    padding: 2px 8px;
+    border:0;
+}
+
+div.result-item h5 {
+    margin: 0 0 5px 0;
+    padding: 0px 1px 3px 5px;
+}
+
+.searchresults{
+    padding-bottom: 0;
+}
+

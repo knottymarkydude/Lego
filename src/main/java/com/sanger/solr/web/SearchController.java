@@ -75,10 +75,9 @@ public class SearchController {
         
         SolrDocumentList solrDocumentList = searchService.getResults(queryForm);
         logger.debug("Results: " + solrDocumentList.toString());
-        for(SolrDocument solrDoc : solrDocumentList){
-            //logger.debug("HL Field" + solrDoc.);
-        }
-        
+        solrDocumentList.stream().forEach((solrDoc) -> {
+            logger.info("HL Field" + solrDoc.getFieldValue("highlight"));
+        });
         
         model.addAttribute("response", solrDocumentList);
         model.addAttribute("numFound", solrDocumentList.getNumFound());

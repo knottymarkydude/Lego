@@ -3,7 +3,7 @@
  * search the index
  */
 $("#search-form").submit(function (event) {
-    alert("Handler for .submit() called.");
+    //alert("Handler for .submit() called.");
     event.preventDefault();
 });
 

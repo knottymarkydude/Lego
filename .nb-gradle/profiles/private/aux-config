@@ -5,20 +5,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
       <group>
-        <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/src/main/resources/templates/search.html</file>
-        <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/src/main/java/com/sanger/solr/web/GreetingController.java</file>
-        <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/src/main/resources/templates/greeting.html</file>
-        <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/src/main/resources/templates/index.html</file>
-        <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/src/test/java/com/sanger/solr/web/HelloControllerTest.java</file>
-        <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/src/main/java/com/sanger/solr/Application.java</file>
-        <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/src/main/resources/config/application.yml</file>
-        <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/build.gradle</file>
-        <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/src/main/java/com/sanger/solr/web/SearchController.java</file>
-      </group>
-    </open-files>
-    <editor-bookmarks lastBookmarkId="0" xmlns="http://www.netbeans.org/ns/editor-bookmarks/2"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-      <group>
         <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/src/main/resources/templates/fragments/headerfooter.html</file>
         <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/src/main/resources/templates/results.html</file>
         <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/src/main/java/com/sanger/solr/web/GreetingController.java</file>
@@ -38,5 +24,6 @@
         <file>file:/Users/mw8/NetBeansProjects/Sanger/Lego/src/test/java/com/sanger/solr/web/HelloControllerIT.java</file>
       </group>
     </open-files>
+    <editor-bookmarks lastBookmarkId="0" xmlns="http://www.netbeans.org/ns/editor-bookmarks/2"/>
   </auxiliary>
 </gradle-project-properties>

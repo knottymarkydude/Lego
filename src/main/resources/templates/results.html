@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head th:replace="fragments/headTag :: headTag">
-        <title>Lego :: Legal Ethics Governence Office repository - static</title>
+        <title>Lego :: Legal Ethics Governance Office repository - static</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
@@ -30,17 +30,17 @@
             <![endif]-->
 
             <div class="panel panel-default">
-                <div class='searchresults' th:unless="${#lists.isEmpty(response)}">
-
+                <div class="panel-heading panel">
                     <p th:text="'Search Term: ' + ${q}"></p>
-                    
                     <p th:text="'Number of Results: ' + ${numFound}"></p>
-                    
-                    <div th:each="doc : ${response}" class="list-group list-results" id="results">
+                </div>
+                <div id="results" class="panel-body searchresults" th:unless="${#lists.isEmpty(response)}">
+
+                    <div th:each="doc : ${response}" class="list-group list-results">
                         <div class="list-group-item result-item">
-                            <h3 th:text="${doc.filename}"></h3>
+                            <h5 th:text="${doc.filename}"></h5>
                             <div class="list-group-item result-item">
-                                <span th:text="${doc.highlight}"></span>
+                                <span th:utext="${doc.highlight}"></span>
                             </div>
                         </div>
                     </div>
