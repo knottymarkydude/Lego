@@ -24,6 +24,15 @@ div.result-item h5 {
 }
 
 .searchresults{
+    padding: 0;
+}
+
+.results-header{
     padding-bottom: 0;
+}
+
+.highlighted{
+    font-style: oblique;
+    color: red;
 }
 

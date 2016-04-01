@@ -5,7 +5,7 @@
  */
 package com.sanger.solr.service;
 
-import com.sanger.model.search.QueryForm;
+import com.sanger.solr.model.search.QueryForm;
 import com.sanger.solr.service.model.SearchResults;
 import java.io.IOException;
 import java.util.Iterator;

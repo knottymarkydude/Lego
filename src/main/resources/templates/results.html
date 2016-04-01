@@ -30,7 +30,7 @@
             <![endif]-->
 
             <div class="panel panel-default">
-                <div class="panel-heading panel">
+                <div class="panel-heading panel results-header">
                     <p th:text="'Search Term: ' + ${q}"></p>
                     <p th:text="'Number of Results: ' + ${numFound}"></p>
                 </div>
@@ -38,7 +38,7 @@
 
                     <div th:each="doc : ${response}" class="list-group list-results">
                         <div class="list-group-item result-item">
-                            <h5 th:text="${doc.filename}"></h5>
+                            <a th:href="@{'/docs/'+${doc.directory}+'/'+${doc.filename}}"><h5 th:text="${doc.filename}"></h5></a>
                             <div class="list-group-item result-item">
                                 <span th:utext="${doc.highlight}"></span>
                             </div>

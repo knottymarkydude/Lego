@@ -5,7 +5,7 @@
  */
 package com.sanger.solr.web;
 
-import com.sanger.model.search.QueryForm;
+import com.sanger.solr.model.search.QueryForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;

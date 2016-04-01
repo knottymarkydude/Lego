@@ -4,7 +4,7 @@
  * 
  * Sanger Institute
  */
-package com.sanger.model.search;
+package com.sanger.solr.model.search;
 
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;

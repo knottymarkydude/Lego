@@ -5,7 +5,7 @@
  */
 package com.sanger.solr.service;
 
-import com.sanger.model.search.QueryForm;
+import com.sanger.solr.model.search.QueryForm;
 import com.sanger.solr.Application;
 import com.sanger.solr.config.Config;
 import org.apache.solr.client.solrj.response.QueryResponse;

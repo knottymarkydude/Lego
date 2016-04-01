@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-@SpringBootApplication
+@SpringBootApplication  // because it's on the root package
 public class Application {
 
     public static void main(String[] args) {
