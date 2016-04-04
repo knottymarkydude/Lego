@@ -38,7 +38,7 @@
 
                     <div th:each="doc : ${response}" class="list-group list-results">
                         <div class="list-group-item result-item">
-                            <a th:href="@{'/docs/'+${doc.directory}+'/'+${doc.filename}}"><h5 th:text="${doc.filename}"></h5></a>
+                            <a th:href="@{'documents/'+${doc.directory}+'/'+${doc.filename}}"><h5 th:text="${doc.filename}"></h5></a>
                             <div class="list-group-item result-item">
                                 <span th:utext="${doc.highlight}"></span>
                             </div>

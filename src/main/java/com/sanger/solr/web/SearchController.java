@@ -6,17 +6,17 @@
 package com.sanger.solr.web;
 
 import com.sanger.solr.model.search.QueryForm;
-import com.sanger.solr.config.Config;
 import com.sanger.solr.service.SearchService;
 import com.sanger.solr.utils.DefaultProperties;
 import javax.validation.Valid;
 import org.apache.solr.common.SolrDocumentList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,15 +27,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author mw8
  */
 @Controller
-public class SearchController {
+public class SearchController implements ErrorController {
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Autowired
-    private Config config;
-
     private DefaultProperties props;
-       
+
     String docRoot;
 
     SearchService searchService;
@@ -43,28 +40,32 @@ public class SearchController {
     private String collection;
     private static final String QT = "/tika";
     private final String PROPFILE = "app";
+    private static final String ERROR_PATH = "/error";
 
     public SearchController() {
         searchService = new SearchService("lego");
         props = new DefaultProperties(PROPFILE);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getHomePage(Model model) {
+    @ModelAttribute("queryFormBean")
+    public QueryForm createQueryForm() {
+        logger.debug("Creating Query Form");
         QueryForm queryForm = new QueryForm();
         queryForm.setStart(0);
         queryForm.setRows(10);
-        model.addAttribute("queryForm", queryForm);
+        return queryForm;
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String getHomePage(Model model) {
+        model.addAttribute("queryForm", this.createQueryForm());
         model.addAttribute("message", "Lego Application working");
         return "index";
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(Model model) {
-        QueryForm queryForm = new QueryForm();
-        queryForm.setStart(0);
-        queryForm.setRows(10);
-        model.addAttribute("queryForm", queryForm);
+        model.addAttribute("queryForm", this.createQueryForm());
         return "search";
     }
 
@@ -87,7 +88,7 @@ public class SearchController {
 
         docRoot = props.getPropValue("docRoot");
         logger.debug("DocRoot:::" + docRoot);
-        
+
         // get document root directory from properties file
         model.addAttribute("response", solrDocumentList);
         model.addAttribute("numFound", solrDocumentList.getNumFound());
@@ -95,5 +96,16 @@ public class SearchController {
         model.addAttribute("q", queryForm.getQ());
         model.addAttribute("docRoot", docRoot);
         return "results";
+    }
+
+    @Override
+    public String getErrorPath() {
+        return ERROR_PATH;
+    }
+
+    @RequestMapping(value = ERROR_PATH)
+    public String error(Model model) {
+        model.addAttribute("queryForm", this.createQueryForm());
+        return "error";
     }
 }

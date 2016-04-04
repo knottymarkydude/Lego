@@ -15,6 +15,8 @@ app.setShowBanner(false);
 app.setAddCommandLineProperties(true);
 app.run(args);
 
+See https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+
 Properties files
 You can put properties files on the classpath, or in /config under classpath,
 or you can add it as an arguement

@@ -1,18 +1,13 @@
-environments:
-    collections: 
-      - lego
-      - spar
-    
-    servers:
-      - http://web-solrcloudspardev-01.internal.sanger.ac.uk:8080/
-      - http://web-solrcloudsparlive-01.internal.sanger.ac.uk:8000/
-
 management:
     port: 8081
 
 server:
     port: 8080
-
+    error:
+        path: /error
+        whitelabel:
+            enabled: true
+    
 info:
     app:
         name: Lego
@@ -33,7 +28,7 @@ endpoints:
 
 spring:
     application.name: Lego
-    profiles.active: production
+    profiles.active: dev
     
 ---
 
@@ -41,11 +36,13 @@ spring:
   profiles: production
   name: Production Server
   url: http://production
+  collection: lego
 ---
 
 spring:
   profiles: dev
   name: Development Server
   url: http://dev
+  collection: lego
 
-  
+      

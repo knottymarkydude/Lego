@@ -7,18 +7,14 @@ package com.sanger.solr.service;
 
 import com.sanger.solr.model.search.QueryForm;
 import com.sanger.solr.Application;
-import com.sanger.solr.config.Config;
-import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.client.solrj.response.SolrPingResponse;
 import org.apache.solr.common.SolrDocumentList;
-import org.apache.solr.common.params.ModifiableSolrParams;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -32,8 +28,8 @@ public class SearchServiceTest {
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Autowired
-    private Config config;
+    //@Autowired
+    //private Config config;
 
     SearchService searchService;
 
@@ -58,7 +54,7 @@ public class SearchServiceTest {
         queryForm.setRows(ROWS);
         queryForm.setStart(STARTDOC);
 
-        collection = config.getCollections().get(0);
+        collection = "lego"; //config.getCollection();
 
         searchService = new SearchService(collection);
 
