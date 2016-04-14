@@ -3,7 +3,6 @@ package com.sanger.solr;
 import java.util.Arrays;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScan.Filter;
@@ -14,8 +13,8 @@ import org.springframework.context.annotation.FilterType;
 // @SpringBootApplication is same as adding all 3:
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan
-public class Application {
+@ComponentScan(basePackages = { "com.sanger.solr" }, excludeFilters = { @Filter(type = FilterType.ANNOTATION, value = Configuration.class) })
+public class ApplicationTest {
 
     public static void main(String[] args) {
         //SpringApplication.run(Application.class, args);

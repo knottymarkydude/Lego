@@ -6,7 +6,7 @@
 package com.sanger.solr.service;
 
 import com.sanger.solr.model.search.QueryForm;
-import com.sanger.solr.Application;
+import com.sanger.solr.ApplicationTest;
 import org.apache.solr.client.solrj.response.SolrPingResponse;
 import org.apache.solr.common.SolrDocumentList;
 import org.junit.Before;
@@ -23,7 +23,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @author mw8
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringApplicationConfiguration(classes = ApplicationTest.class)
 public class SearchServiceTest {
 
     Logger logger = LoggerFactory.getLogger(getClass());

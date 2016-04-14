@@ -23,6 +23,10 @@ div.result-item h5 {
     padding: 0px 1px 3px 5px;
 }
 
+div.result-item span {
+     font-size: 0.9em;
+}
+
 .searchresults{
     padding: 0;
 }
@@ -36,3 +40,10 @@ div.result-item h5 {
     color: red;
 }
 
+#footer{
+    font-size: 0.8em;
+}
+
+div.centre {
+    text-align: center;
+}

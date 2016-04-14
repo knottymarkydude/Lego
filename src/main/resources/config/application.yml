@@ -27,6 +27,16 @@ endpoints:
 ---
 
 spring:
+    resources:
+        chain:
+            strategy:
+                content:
+                    enabled: true
+                    paths: /**
+                    
+---                    
+    
+spring:
     application.name: Lego
     profiles.active: dev
     
@@ -45,4 +55,3 @@ spring:
   url: http://dev
   collection: lego
 
-      

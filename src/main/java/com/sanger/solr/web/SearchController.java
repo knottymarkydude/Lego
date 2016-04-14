@@ -8,10 +8,12 @@ package com.sanger.solr.web;
 import com.sanger.solr.model.search.QueryForm;
 import com.sanger.solr.service.SearchService;
 import com.sanger.solr.utils.DefaultProperties;
+import com.sanger.solr.utils.MathsFunctions;
 import javax.validation.Valid;
 import org.apache.solr.common.SolrDocumentList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,9 +36,11 @@ public class SearchController implements ErrorController {
     private DefaultProperties props;
 
     String docRoot;
-
     SearchService searchService;
 
+    @Autowired
+    MathsFunctions maths;
+    
     private String collection;
     private static final String QT = "/tika";
     private final String PROPFILE = "app";
@@ -85,13 +89,19 @@ public class SearchController implements ErrorController {
         //solrDocumentList.stream().forEach((solrDoc) -> {
         //    logger.debug("HL Field" + solrDoc.getFieldValue("highlight"));
         //});
-
+        
+        // Pagination
+        long numFound = solrDocumentList.getNumFound();
+        long rows = queryForm.getRows();
+        int numOfPages = maths.getRoundedUpNum(numFound, rows);
+        
         docRoot = props.getPropValue("docRoot");
         logger.debug("DocRoot:::" + docRoot);
 
         // get document root directory from properties file
         model.addAttribute("response", solrDocumentList);
         model.addAttribute("numFound", solrDocumentList.getNumFound());
+        model.addAttribute("numOfPages", numOfPages);
         model.addAttribute("queryForm", queryForm);
         model.addAttribute("q", queryForm.getQ());
         model.addAttribute("docRoot", docRoot);

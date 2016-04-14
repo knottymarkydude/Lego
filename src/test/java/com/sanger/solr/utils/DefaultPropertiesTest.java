@@ -5,7 +5,6 @@
  */
 package com.sanger.solr.utils;
 
-import com.sanger.solr.utils.DefaultProperties;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

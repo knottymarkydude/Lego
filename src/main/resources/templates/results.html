@@ -31,14 +31,18 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading panel results-header">
-                    <p th:text="'Search Term: ' + ${q}"></p>
-                    <p th:text="'Number of Results: ' + ${numFound}"></p>
+
+                    <div class="centre">
+                        <p><span th:text="'Search Term: ' + ${q}"></span> <span th:text="'Number of Results: ' + ${numFound}"></span></p>
+
+                        <div id="page-selection"></div>
+                    </div>
                 </div>
                 <div id="results" class="panel-body searchresults" th:unless="${#lists.isEmpty(response)}">
 
                     <div th:each="doc : ${response}" class="list-group list-results">
                         <div class="list-group-item result-item">
-                            <a th:href="@{'documents/'+${doc.directory}+'/'+${doc.filename}}"><h5 th:text="${doc.filename}"></h5></a>
+                            <a th:href="@{'/docs/'+${doc.directory}+'/'+${doc.filename}}" th:target="_blank"><h5 th:text="${doc.filename}"></h5></a>
                             <div class="list-group-item result-item">
                                 <span th:utext="${doc.highlight}"></span>
                             </div>
@@ -59,6 +63,37 @@
                     <p>LEGO V0.0.1 SNAPSHOT 2016 Static</p>
                 </div>
             </footer>
+            <th:block layout:fragment="pagination"></th:block>
+
         </div><!-- container -->
+        <script type="text/javascript">
+            //<![CDATA[
+            var model = [];
+
+            model.pageNum = "${pageNum}";
+            model.numOfPages = "${numOfPages}";
+            model.rows = "${rows}";
+            //]]>
+            $('#page-selection').bootpag({
+                total: 10,
+                page: 1,
+                maxVisible: 5,
+                leaps: true,
+                firstLastUse: true,
+                first: '←',
+                last: '→',
+                wrapClass: 'pagination',
+                activeClass: 'active',
+                disabledClass: 'disabled',
+                nextClass: 'next',
+                prevClass: 'prev',
+                lastClass: 'last',
+                firstClass: 'first'
+            }).on("page", function (event, num) {
+                $("#content").html("Page " + num); // or some ajax content loading...
+            });
+
+
+        </script>
     </body>
 </html>
