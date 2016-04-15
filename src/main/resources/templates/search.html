@@ -35,6 +35,9 @@
                     Enter search term in the box above, and click the search icon.
                 </p>
 
+                <div>Established locale country: <span th:text="${#locale.country}">US</span></div>
+                <div>Http Servlet Request: <span th:text="${#httpServletRequest.getContextPath()}">httpServletRequest</span></div>
+                
                 
                 <!--<form action="#" th:action="@{/search}" th:object="${queryForm}" method="post">
 

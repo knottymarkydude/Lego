@@ -18,6 +18,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class MathsFunctions {
 
+    public MathsFunctions() {
+    }
+
     Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
@@ -27,30 +30,19 @@ public class MathsFunctions {
      * @param numOfRows
      * @return int
      */
-    public int getRoundedUpNum(long totalNum, long numOfRows) {
-        int a = (int) Math.ceil(totalNum / numOfRows);
+    public int getRoundedUpNum(long totalNum, int numOfRows) {
+        int a = (int) Math.ceil(totalNum / numOfRows) + 1;
         return a;
     }
 
     /**
      *
-     * @return startDoc value
-     */
-    public String getPageNumStart(int pageNum, double numOfRows) {
-        int startDoc = (int) ((pageNum * numOfRows) - numOfRows);
-        String s = Integer.toString(startDoc);
-        return s;
-    }
-
-    /**
-     * 
      * @param pageNum
      * @param numOfRows
-     * @return 
+     * @return
      */
-    public String getPageNumStart(int pageNum, int numOfRows) {
+    public int getPageNumStartInt(int pageNum, int numOfRows) {
         int startDoc = ((pageNum * numOfRows) - numOfRows);
-        String s = Integer.toString(startDoc);
-        return s;
+        return startDoc;
     }
 }

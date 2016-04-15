@@ -33,8 +33,9 @@
                 <div class="panel-heading panel results-header">
 
                     <div class="centre">
-                        <p><span th:text="'Search Term: ' + ${q}"></span> <span th:text="'Number of Results: ' + ${numFound}"></span></p>
+                        <p><span th:text="'Search Term: ' + ${queryForm.q}"></span> <span th:text="'Number of Results: ' + ${numFound}"></span></p>
 
+                        <div id="content"></div>
                         <div id="page-selection"></div>
                     </div>
                 </div>
@@ -50,6 +51,8 @@
                     </div>
 
                 </div>
+
+
             </div>
 
             <footer th:replace="fragments/headerfooter :: footer">
@@ -66,17 +69,20 @@
             <th:block layout:fragment="pagination"></th:block>
 
         </div><!-- container -->
-        <script type="text/javascript">
-            //<![CDATA[
+        <script th:inline="javascript">
+            /*<![CDATA[*/
             var model = [];
 
-            model.pageNum = "${pageNum}";
-            model.numOfPages = "${numOfPages}";
-            model.rows = "${rows}";
-            //]]>
+            model.pageNum = /*[[${queryForm.pageNum}]]*/ '1';
+            model.numOfPages = /*[[${numOfPages}]]*/ '5';
+            model.rows = /*[[${queryForm.rows}]]*/ '10';
+
+            console.log("pageNum :: + " + model.pageNum);
+            console.log("numOfPages :: + " + model.numOfPages);
+
             $('#page-selection').bootpag({
-                total: 10,
-                page: 1,
+                total: model.numOfPages,
+                page: model.pageNum,
                 maxVisible: 5,
                 leaps: true,
                 firstLastUse: true,
@@ -90,9 +96,18 @@
                 lastClass: 'last',
                 firstClass: 'first'
             }).on("page", function (event, num) {
-                $("#content").html("Page " + num); // or some ajax content loading...
+                $("#content").html("Page " + num);
+                $('#search-form input[name=pageNum]').val(num);
+                //$('#search-form input[name=start]').val(num);
+                $("#search-form").submit();
+
             });
 
+            function setStartValue(pageNumber, rows) {
+                
+            }
+
+            /*]]>*/
 
         </script>
     </body>

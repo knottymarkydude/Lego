@@ -57,6 +57,7 @@ public class SearchController implements ErrorController {
         QueryForm queryForm = new QueryForm();
         queryForm.setStart(0);
         queryForm.setRows(10);
+        queryForm.setPageNum(1);
         return queryForm;
     }
 
@@ -92,8 +93,13 @@ public class SearchController implements ErrorController {
         
         // Pagination
         long numFound = solrDocumentList.getNumFound();
-        long rows = queryForm.getRows();
+        int rows = queryForm.getRows();
         int numOfPages = maths.getRoundedUpNum(numFound, rows);
+        //ToDo Need to be done client side so that it is immediate.
+        queryForm.setStart(maths.getPageNumStartInt(queryForm.getPageNum(), rows));
+        logger.info("numOfPages:::" + numOfPages);
+        logger.info("start:::" + queryForm.getStart());
+        
         
         docRoot = props.getPropValue("docRoot");
         logger.debug("DocRoot:::" + docRoot);

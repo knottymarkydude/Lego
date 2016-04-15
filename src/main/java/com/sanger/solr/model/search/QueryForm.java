@@ -23,6 +23,7 @@ public class QueryForm {
     private Integer start;
     @NotNull
     private Integer rows;
+    private Integer pageNum;
 
     public String getQ() {
         return q;
@@ -47,7 +48,13 @@ public class QueryForm {
     public void setRows(Integer rows) {
         this.rows = rows;
     }
-    
-    
+
+    public Integer getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(Integer pageNum) {
+        this.pageNum = pageNum;
+    }
     
 }
