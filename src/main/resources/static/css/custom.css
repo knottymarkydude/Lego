@@ -42,8 +42,14 @@ div.result-item span {
 
 #footer{
     font-size: 0.8em;
+    padding: 5px;
 }
 
 div.centre {
     text-align: center;
+}
+
+.hl-term {
+    color: #a94442;
+    font-weight: bold;
 }

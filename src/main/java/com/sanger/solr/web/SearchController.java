@@ -96,7 +96,7 @@ public class SearchController implements ErrorController {
         int rows = queryForm.getRows();
         int numOfPages = maths.getRoundedUpNum(numFound, rows);
         //ToDo Need to be done client side so that it is immediate.
-        queryForm.setStart(maths.getPageNumStartInt(queryForm.getPageNum(), rows));
+        //queryForm.setStart(maths.getPageNumStartInt(queryForm.getPageNum(), rows));
         logger.info("numOfPages:::" + numOfPages);
         logger.info("start:::" + queryForm.getStart());
         

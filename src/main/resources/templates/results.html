@@ -33,10 +33,12 @@
                 <div class="panel-heading panel results-header">
 
                     <div class="centre">
-                        <p><span th:text="'Search Term: ' + ${queryForm.q}"></span> <span th:text="'Number of Results: ' + ${numFound}"></span></p>
+                        <div id="content"><p><span>Search Term: </span><span class="hl-term" th:text="${queryForm.q}"></span> | <span>Number of Results: </span><span class="hl-term" th:text="${numFound}"></span></p></div>
 
-                        <div id="content"></div>
-                        <div id="page-selection"></div>
+                        
+                            <!--<span th:text="${response.numFound != 0} ? ${response.numFound} : 'Nothing found'">Pagination</span>-->
+                            <div id="page-selection"></div>
+ 
                     </div>
                 </div>
                 <div id="results" class="panel-body searchresults" th:unless="${#lists.isEmpty(response)}">
@@ -77,8 +79,8 @@
             model.numOfPages = /*[[${numOfPages}]]*/ '5';
             model.rows = /*[[${queryForm.rows}]]*/ '10';
 
-            console.log("pageNum :: + " + model.pageNum);
-            console.log("numOfPages :: + " + model.numOfPages);
+            //console.log("pageNum :: + " + model.pageNum);
+            //console.log("numOfPages :: + " + model.numOfPages);
 
             $('#page-selection').bootpag({
                 total: model.numOfPages,
@@ -96,15 +98,16 @@
                 lastClass: 'last',
                 firstClass: 'first'
             }).on("page", function (event, num) {
-                $("#content").html("Page " + num);
+                //$("#content").html("Page " + num);
                 $('#search-form input[name=pageNum]').val(num);
-                //$('#search-form input[name=start]').val(num);
+                var start = (model.rows * num) - model.rows;
+                $('#search-form input[name=start]').val(start);
                 $("#search-form").submit();
 
             });
 
             function setStartValue(pageNumber, rows) {
-                
+
             }
 
             /*]]>*/

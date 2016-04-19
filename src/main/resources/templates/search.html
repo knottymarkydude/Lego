@@ -30,39 +30,13 @@
 
             <div class="panel panel-default">
 
+                <div class="panel-body"> 
+                    <p>
+                        If you are experiencing issues with this application, or have any queries
+                        regarding this application, please contact the webteam @ <a href="mailto:ssg-web@sanger.ac.uk">ssg-web@sanger.ac.uk</a>
+                    </p>
+                </div>
 
-                <p>
-                    Enter search term in the box above, and click the search icon.
-                </p>
-
-                <div>Established locale country: <span th:text="${#locale.country}">US</span></div>
-                <div>Http Servlet Request: <span th:text="${#httpServletRequest.getContextPath()}">httpServletRequest</span></div>
-                
-                
-                <!--<form action="#" th:action="@{/search}" th:object="${queryForm}" method="post">
-
-                    <table>
-                        <tr>
-                            <td>Search</td>
-                            <td><input type="text" th:field="*{q}" /></td>
-                            <td th:if="${#fields.hasErrors('q')}" th:errors="*{q}">Query error message</td>
-                        </tr>
-                        <tr>
-                            <td>Start:</td>
-                            <td><input type="text" th:field="*{start}" /></td>
-                            <td th:if="${#fields.hasErrors('start')}" th:errors="*{start}">Start error message</td>
-                        </tr>
-                        <tr>
-                            <td>Rows:</td>
-                            <td><input type="text" th:field="*{rows}" /></td>
-                            <td th:if="${#fields.hasErrors('rows')}" th:errors="*{rows}">Rows error message</td>
-                        </tr>
-                        <tr>
-                            <td><button type="submit">Submit post</button></td>
-                        </tr>
-                    </table>
-
-                </form>-->
             </div>
 
             <footer th:replace="fragments/headerfooter :: footer">
