@@ -52,4 +52,11 @@ See HelloControllerTestIT.java
 The embedded server is started up on a random port by virtue of the @IntegrationTest("${server.port=0}") and 
 the actual port is discovered at runtime with the @Value("${local.server.port}").
 
+------------------------------------------------------------------------------------------------------------
+
+I'm converting the Lego client to use HTML5 components rather than Bootstrap
+
+Starting with HTML5Boilerplate.
+https://html5boilerplate.com/
+
 
