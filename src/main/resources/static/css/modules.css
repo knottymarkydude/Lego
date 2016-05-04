@@ -1,0 +1,422 @@
+/*
+
+    Module Styles
+    Created on : 27-Apr-2016, 12:53:25
+    Author     : mw8
+*/
+
+/* List */
+
+ol.default {
+    list-style: decimal;
+    padding-left: 1.25em;
+}
+
+ol.default li {
+    padding-left: 0.25em;
+}
+
+ul.default {
+    list-style: disc;
+    padding-left: 1em;
+}
+
+ul.default li {
+    padding-left: 0.5em;
+}
+
+ul.icons {
+    cursor: default;
+}
+
+ul.icons li {
+    display: inline-block;
+    line-height: 1em;
+    padding-left: 0.5em;
+}
+
+ul.icons li:first-child {
+    padding-left: 0;
+}
+
+ul.featured-icons {
+    cursor: default;
+    margin: -0.75em 0 0 0;
+    opacity: 0.35;
+    overflow: hidden;
+    position: relative;
+}
+
+ul.featured-icons li {
+    display: block;
+    float: left;
+    text-align: center;
+    width: 50%;
+}
+
+ul.featured-icons li .icon {
+    display: inline-block;
+    font-size: 6.25em;
+    height: 1.25em;
+    line-height: 1.25em;
+    width: 1em;
+}
+
+ul.buttons {
+    cursor: default;
+}
+
+ul.buttons:last-child {
+    margin-bottom: 0;
+}
+
+ul.buttons li {
+    display: inline-block;
+    padding: 0 0 0 1.5em;
+}
+
+ul.buttons li:first-child {
+    padding: 0;
+}
+
+ul.buttons.vertical li {
+    display: block;
+    padding: 1.5em 0 0 0;
+}
+
+ul.buttons.vertical li:first-child {
+    padding: 0;
+}
+
+/* Section/Article */
+
+section.special, article.special {
+    text-align: center;
+}
+
+header.major {
+    padding-bottom: 2em;
+}
+
+header.special {
+    margin-bottom: 5em;
+    padding-top: 7em;
+    position: relative;
+    text-align: center;
+}
+
+header.special:before, header.special:after {
+    border-bottom: solid 1.5px;
+    border-top: solid 1.5px;
+    content: '';
+    height: 7px;
+    opacity: 0.1;
+    position: absolute;
+    top: 1.75em;
+    width: 43%;
+}
+
+header.special:before {
+    left: 0;
+}
+
+header.special:after {
+    right: 0;
+}
+
+header.special h2 {
+    margin-bottom: 0;
+}
+
+header.special h2 + p {
+    margin-bottom: 0;
+    padding-top: 1.5em;
+}
+
+header.special .icon {
+    cursor: default;
+    height: 7em;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 1em;
+    width: 100%;
+}
+
+header.special .icon:before {
+    font-size: 3.5em;
+    opacity: 0.35;
+}
+
+footer > :last-child {
+    margin-bottom: 0;
+}
+
+footer.major {
+    padding-top: 3em;
+}
+
+/* Form */
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+    -moz-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    border: solid 1px #7c8081;
+    color: inherit;
+    display: block;
+    padding: 0.75em;
+    text-decoration: none;
+    width: 100%;
+    outline: 0;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #7c8081;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    line-height: 1em;
+}
+
+::-webkit-input-placeholder {
+    color: inherit;
+    opacity: 0.5;
+    position: relative;
+    top: 3px;
+}
+
+:-moz-placeholder {
+    color: inherit;
+    opacity: 0.5;
+}
+
+::-moz-placeholder {
+    color: inherit;
+    opacity: 0.5;
+}
+
+:-ms-input-placeholder {
+    color: inherit;
+    opacity: 0.5;
+}
+
+.formerize-placeholder {
+    color: rgba(124, 128, 129, 0.5) !important;
+}
+
+/* Image */
+
+.image {
+    border: 0;
+    position: relative;
+}
+
+.image:before {
+    /*background: url("images/overlay.png");*/
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.image.fit {
+    display: block;
+}
+
+.image.fit img {
+    display: block;
+    width: 100%;
+}
+
+.image.featured {
+    display: block;
+    margin: 0 0 2em 0;
+}
+
+.image.featured img {
+    display: block;
+    width: 100%;
+}
+
+/* Table */
+
+table {
+    width: 100%;
+}
+
+table.default {
+    width: 100%;
+}
+
+table.default tbody tr {
+    border-bottom: solid 1px rgba(124, 128, 129, 0.2);
+}
+
+table.default td {
+    padding: 0.5em 1em 0.5em 1em;
+}
+
+table.default th {
+    font-weight: 400;
+    padding: 0.5em 1em 0.5em 1em;
+    text-align: left;
+}
+
+table.default thead {
+    background: #7c8081;
+    color: #fff;
+}
+
+/* Pagination */
+
+#page-selection{
+    text-align: center;
+}
+
+.header-centre{
+    text-align: center;
+}
+
+/* Results */
+
+.search-results {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.search-content {
+
+}
+
+.result-item {
+
+}
+
+.result-item h5 {
+    font-size: 90%;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.result-item p {
+    font-size: 80%;
+    line-height: 1.2em;
+    margin-left: 15px;
+    margin-bottom: 4px;
+}
+
+/* Pagination */
+.pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+.pagination > li {
+  display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #084467;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  z-index: 2;
+  color: #23527c;
+  background-color: #eee;
+  border-color: #ddd;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 3;
+  color: #fff;
+  cursor: default;
+  background-color: #337ab7;
+  border-color: #337ab7;
+}
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #777;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: #ddd;
+}
+.pagination-lg > li > a,
+.pagination-lg > li > span {
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+}
+.pagination-lg > li:first-child > a,
+.pagination-lg > li:first-child > span {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.pagination-lg > li:last-child > a,
+.pagination-lg > li:last-child > span {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+.pagination-sm > li > a,
+.pagination-sm > li > span {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.pagination-sm > li:first-child > a,
+.pagination-sm > li:first-child > span {
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.pagination-sm > li:last-child > a,
+.pagination-sm > li:last-child > span {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}

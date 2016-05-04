@@ -1,60 +1,49 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
     <head th:replace="fragments/headTag :: headTag">
-        <title>Lego :: Legal Ethics Governance Office repository - static</title>
+        <title>Lego :: Legal Ethics Governence Office repository - static</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </head>
-    <body>
-        <div class="container">
-            <header th:replace="fragments/headerfooter :: header">
+    <body class="index">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="page-wrapper">
+            <header id="header" th:replace="fragments/headerfooter :: header">
                 <!-- ============================================================================ -->
                 <!-- This content is only used for static prototyping purposes (natural templates)-->
                 <!-- and is therefore entirely optional, as this markup fragment will be included -->
                 <!-- from "fragments/header.html" at runtime.                                     -->
                 <!-- ============================================================================ -->
-                <div class="navbar navbar-default navbar-fixed-top">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="#">Static header</a>
-                        </div>
-                        <div class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">Home</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+
+                <h2>Header</h2>
+
             </header>
-            <!--[if lt IE 8]>
-                    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-            <![endif]-->
 
-            <div class="panel panel-default">
-                <div class="panel-heading panel results-header">
 
-                    <div class="centre">
-                        <div id="content"><p><span>Search Term: </span><span class="hl-term" th:text="${queryForm.q}"></span> | <span>Number of Results: </span><span class="hl-term" th:text="${numFound}"></span></p></div>
+            <div id="main">
+                <section class="wrapper style4 search-results">
 
-                        
-                            <!--<span th:text="${response.numFound != 0} ? ${response.numFound} : 'Nothing found'">Pagination</span>-->
-                            <div id="page-selection"></div>
- 
-                    </div>
-                </div>
-                <div id="results" class="panel-body searchresults" th:unless="${#lists.isEmpty(response)}">
+                    <h4 class="header-centre">                    
+                        <span>Search Term:</span>&nbsp;<span class="highlighted" th:text="${queryForm.q}"></span>
+                        &nbsp;|&nbsp; 
+                        <span>Results: </span><span class="highlighted" th:text="${numFound}"></span>
+                    </h4>
+                    <div id="page-selection" th:unless="${#lists.isEmpty(response)}"></div>
 
-                    <div th:each="doc : ${response}" class="list-group list-results">
-                        <div class="list-group-item result-item">
-                            <a th:href="@{'/docs/'+${doc.directory}+'/'+${doc.filename}}" th:target="_blank"><h5 th:text="${doc.filename}"></h5></a>
-                            <div class="list-group-item result-item">
-                                <span th:utext="${doc.highlight}"></span>
-                            </div>
+                    <div id="results" class="search-content" th:unless="${#lists.isEmpty(response)}">
+
+                        <div th:each="doc : ${response}" class="result-item">
+                            <h5><i class="fa fa-file-pdf-o"></i> 
+                                <a th:href="@{'/docs/'+${doc.directory}+'/'+${doc.filename}}" th:target="_blank">
+                                    <span th:text="${doc.filename}"></span></a>
+                            </h5>                                                         
+                            <p th:utext="${doc.highlight}"></p>
                         </div>
                     </div>
-
-                </div>
-
-
+                </section>
             </div>
 
             <footer th:replace="fragments/headerfooter :: footer">
@@ -63,55 +52,18 @@
                 <!-- and is therefore entirely optional, as this markup fragment will be included -->
                 <!-- from "fragments/header.html" at runtime.                                     -->
                 <!-- ============================================================================ -->
-                <div id="footer" class="panel panel-default">
-                    <p>Wellcome Trust Sanger Institute, Genome Research Limited (reg no. 2742969)</p>
-                    <p>LEGO V0.0.1 SNAPSHOT 2016 Static</p>
-                </div>
+
+                <ul class='code'>This site is hosted by the Wellcome Trust Sanger Institute</ul>
+
+                <ul class="copyright">
+                    <li>Wellcome Genome Campus is a division of Genome Research Limited (reg no. 2742969), a charity registered in England with number 1021457.</li>
+                </ul>
             </footer>
-            <th:block layout:fragment="pagination"></th:block>
 
-        </div><!-- container -->
-        <script th:inline="javascript">
-            /*<![CDATA[*/
-            var model = [];
+        </div><!-- Page Wrapper -->
+    <th:block th:replace="fragments/js :: script">
 
-            model.pageNum = /*[[${queryForm.pageNum}]]*/ '1';
-            model.numOfPages = /*[[${numOfPages}]]*/ '5';
-            model.rows = /*[[${queryForm.rows}]]*/ '10';
+    </th:block>
 
-            //console.log("pageNum :: + " + model.pageNum);
-            //console.log("numOfPages :: + " + model.numOfPages);
-
-            $('#page-selection').bootpag({
-                total: model.numOfPages,
-                page: model.pageNum,
-                maxVisible: 5,
-                leaps: true,
-                firstLastUse: true,
-                first: '←',
-                last: '→',
-                wrapClass: 'pagination',
-                activeClass: 'active',
-                disabledClass: 'disabled',
-                nextClass: 'next',
-                prevClass: 'prev',
-                lastClass: 'last',
-                firstClass: 'first'
-            }).on("page", function (event, num) {
-                //$("#content").html("Page " + num);
-                $('#search-form input[name=pageNum]').val(num);
-                var start = (model.rows * num) - model.rows;
-                $('#search-form input[name=start]').val(start);
-                $("#search-form").submit();
-
-            });
-
-            function setStartValue(pageNumber, rows) {
-
-            }
-
-            /*]]>*/
-
-        </script>
-    </body>
+</body>
 </html>

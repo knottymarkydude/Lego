@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
     <body>
-
     <th:block layout:fragment="script">
-        <script src="../js/vendor/jquery-1.12.0.min.js"  th:src="@{/js/vendor/jquery-1.12.0.min.js}"></script>
-        <script src="../js/vendor/bootstrap.min.js"  th:src="@{/js/vendor/bootstrap.min.js}"></script>
-        <script src="../js/vendor/modernizr-2.8.3.min.js" th:href="@{/js/modernizr-2.8.3.min}"></script>
-        <script src="../js/main.js"  th:src="@{/js/main.js}"></script>
-        <script src="../js/plugins.js"  th:src="@{/js/plugins.js}"></script>
+        <!--[if lte IE 8]><script src="../js/ie/respond.min.js" th:src="@{/js/respond.min.js}"></script><![endif]-->
+        <script src="../js/lego.min.js"  th:src="@{/js/lego.min.js}"></script>
         <script>
+            new UISearch(document.getElementById('sb-search'));
+        </script>
+        <script th:inline="javascript">
+
+            /*<![CDATA[*/
+            var model = [];
+
+            model.pageNum = /*[[${queryForm.pageNum}]]*/ '1';
+            model.numOfPages = /*[[${numOfPages}]]*/ '5';
+            model.rows = /*[[${queryForm.rows}]]*/ '10';
+            
+            $('#page-selection').bootpag({
+                total: model.numOfPages,
+                page: model.pageNum,
+                maxVisible: 5,
+                leaps: true,
+                firstLastUse: true,
+                first: '←',
+                last: '→',
+                wrapClass: 'pagination',
+                activeClass: 'active',
+                disabledClass: 'disabled',
+                nextClass: 'next',
+                prevClass: 'prev',
+                lastClass: 'last',
+                firstClass: 'first'
+            }).on("page", function (event, num) {
+                $('#search-form input[name=pageNum]').val(num);
+                var start = (model.rows * num) - model.rows;
+                $('#search-form input[name=start]').val(start);
+                $("#search-form").submit();
+
+            });
+            /*]]>*/
 
         </script>
     </th:block>
-</body>
+    </body>
 </html>

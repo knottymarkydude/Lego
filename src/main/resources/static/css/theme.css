@@ -1,0 +1,155 @@
+/* 
+    Theme styles
+    Created on : 27-Apr-2016, 12:47:54
+    Author     : mw8
+*/
+
+/* Icon */
+
+.icon {
+    text-decoration: none;
+    position: relative;
+}
+
+.icon:before {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none !important;
+}
+
+.icon.circle {
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    border: 0;
+    border-radius: 100%;
+    display: inline-block;
+    font-size: 1.25em;
+    height: 2.25em;
+    left: 0;
+    line-height: 2.25em;
+    text-align: center;
+    text-decoration: none;
+    top: 0;
+    width: 2.25em;
+}
+
+.icon.circle:hover {
+    top: -0.2em;
+}
+
+.icon.circle.fa-twitter {
+    background: #70aecd;
+    color: #fff;
+}
+
+.icon.circle.fa-twitter:hover {
+    background: #7fb7d2;
+}
+
+.icon.circle.fa-facebook {
+    background: #7490c3;
+    color: #fff;
+}
+
+.icon.circle.fa-facebook:hover {
+    background: #829bc9;
+}
+
+.icon.circle.fa-google-plus {
+    background: #db6b67;
+    color: #fff;
+}
+
+.icon.circle.fa-google-plus:hover {
+    background: #df7b77;
+}
+
+.icon.circle.fa-github {
+    background: #dcad8b;
+    color: #fff;
+}
+
+.icon.circle.fa-github:hover {
+    background: #e1b89b;
+}
+
+.icon.circle.fa-dribbble {
+    background: #da83ae;
+    color: #fff;
+}
+
+.icon.circle.fa-dribbble:hover {
+    background: #df93b8;
+}
+
+.icon.featured {
+    cursor: default;
+    display: block;
+    margin: 0 0 1.5em 0;
+    opacity: 0.35;
+    text-align: center;
+}
+
+.icon.featured:before {
+    font-size: 5em;
+    line-height: 1em;
+}
+
+.icon > .label {
+    display: none;
+}
+
+/* Wrapper */
+
+.wrapper {
+    margin-bottom: 5em;
+    padding: 5em;
+}
+
+.wrapper.style1 {
+    padding: 0;
+}
+
+.wrapper.style2 {
+    background-color: #83d3c9;
+    /*background-image: url("images/light-bl.svg"), url("images/light-br.svg");*/
+    background-position: bottom left, bottom right;
+    background-repeat: no-repeat, no-repeat;
+    background-size: 25em, 25em;
+    color: #fff;
+}
+
+.wrapper.style2 .button:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.wrapper.style2 .button.special {
+    background: #fff;
+    border-color: #fff;
+    color: #83d3c9 !important;
+}
+
+.wrapper.style2 .button.special:hover {
+    border-color: inherit !important;
+    color: #fff !important;
+}
+
+.wrapper.style3 {
+    background: #fff;
+    color: inherit;
+}
+
+.wrapper.style4 {
+    background: #fff;
+    color: inherit;
+    padding-left: 3em;
+}
+
+.highlighted {
+    color: rgba(174, 19, 19, 0.96);
+}

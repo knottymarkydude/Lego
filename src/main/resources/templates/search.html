@@ -1,43 +1,40 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
     <head th:replace="fragments/headTag :: headTag">
         <title>Lego :: Legal Ethics Governence Office repository - static</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </head>
-    <body>
-        <div class="container">
-            <header th:replace="fragments/headerfooter :: header">
+    <body class="index">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div id="page-wrapper">
+            <header id="header" th:replace="fragments/headerfooter :: header">
                 <!-- ============================================================================ -->
                 <!-- This content is only used for static prototyping purposes (natural templates)-->
                 <!-- and is therefore entirely optional, as this markup fragment will be included -->
                 <!-- from "fragments/header.html" at runtime.                                     -->
                 <!-- ============================================================================ -->
-                <div class="navbar navbar-default navbar-fixed-top">               
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="#">Static header</a>
-                    </div>
-                    <div class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                        </ul>
-                    </div>
-                </div>
+
+                <h2>Header</h2>
+
             </header>
-            <!--[if lt IE 8]>
-                    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-            <![endif]-->
-
-
-            <div class="panel panel-default">
-
-                <div class="panel-body"> 
-                    <p>
-                        If you are experiencing issues with this application, or have any queries
+            
+            <!-- Main -->
+            <div id="main">
+            <section class="wrapper style4">
+                <div class="">
+                    <h1>Legal Ethics Genome Office</h1>
+                    <p>If you are experiencing issues with this application, or have any queries
                         regarding this application, please contact the webteam @ <a href="mailto:ssg-web@sanger.ac.uk">ssg-web@sanger.ac.uk</a>
                     </p>
-                </div>
 
+                </div>
+            </section>
             </div>
+
 
             <footer th:replace="fragments/headerfooter :: footer">
                 <!-- ============================================================================ -->
@@ -45,11 +42,17 @@
                 <!-- and is therefore entirely optional, as this markup fragment will be included -->
                 <!-- from "fragments/header.html" at runtime.                                     -->
                 <!-- ============================================================================ -->
-                <div id="footer" class="panel panel-default">
-                    <p>Wellcome Trust Sanger Institute, Genome Research Limited (reg no. 2742969)</p>
-                    <p>LEGO V0.0.1 SNAPSHOT 2016 Static</p>
-                </div>
+
+                <ul class='code'>This site is hosted by the Wellcome Trust Sanger Institute</ul>
+
+                <ul class="copyright">
+                    <li>Wellcome Genome Campus is a division of Genome Research Limited (reg no. 2742969), a charity registered in England with number 1021457.</li>
+                </ul>
             </footer>
-        </div>
-    </body>
+
+        </div><!-- Page Wrapper -->
+    <th:block th:replace="fragments/js :: script">
+       
+    </th:block>
+</body>
 </html>

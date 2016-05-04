@@ -45,6 +45,7 @@ public class SearchController implements ErrorController {
     private static final String QT = "/tika";
     private final String PROPFILE = "app";
     private static final String ERROR_PATH = "/error";
+    private String currentQuery = "";
 
     public SearchController() {
         searchService = new SearchService("lego");
@@ -61,23 +62,27 @@ public class SearchController implements ErrorController {
         return queryForm;
     }
 
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getHomePage(Model model) {
+        logger.debug("HomePage");
         model.addAttribute("queryForm", this.createQueryForm());
         model.addAttribute("message", "Lego Application working");
         return "index";
     }
 
+
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(Model model) {
+        logger.debug("Search Get");
         model.addAttribute("queryForm", this.createQueryForm());
-        return "search";
+        return "index";
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     public String searchSubmit(@Valid QueryForm queryForm, BindingResult bindingResult, Model model) {
-        logger.debug("newSearch");
-        logger.debug("bindingResult" + bindingResult);
+        logger.info("Search Post");
+        logger.info("bindingResult" + bindingResult);
         if (bindingResult.hasErrors()) {
             logger.debug("hasErrors");
             return "search";
@@ -85,6 +90,8 @@ public class SearchController implements ErrorController {
 
         logger.debug("queryForm:::" + queryForm.toString());
 
+        
+        
         SolrDocumentList solrDocumentList = searchService.getResults(queryForm);
         logger.debug("Results: " + solrDocumentList.toString());
         //solrDocumentList.stream().forEach((solrDoc) -> {
@@ -99,11 +106,24 @@ public class SearchController implements ErrorController {
         //queryForm.setStart(maths.getPageNumStartInt(queryForm.getPageNum(), rows));
         logger.info("numOfPages:::" + numOfPages);
         logger.info("start:::" + queryForm.getStart());
+        logger.info("pageNum:::" + queryForm.getPageNum());
         
         
         docRoot = props.getPropValue("docRoot");
         logger.debug("DocRoot:::" + docRoot);
 
+        // Check to see if query has changed. If it has, then reset the queryForm.pageNum
+        if (queryForm.getPageNum() == 1) {
+            currentQuery = queryForm.getQ();
+        }else{
+            //check query
+            if (!queryForm.getQ().equals(currentQuery)) {
+                queryForm.setPageNum(1);
+            }
+        }
+        
+        
+        
         // get document root directory from properties file
         model.addAttribute("response", solrDocumentList);
         model.addAttribute("numFound", solrDocumentList.getNumFound());
