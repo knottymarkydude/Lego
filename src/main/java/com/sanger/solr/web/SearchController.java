@@ -91,6 +91,14 @@ public class SearchController implements ErrorController {
         logger.debug("queryForm:::" + queryForm.toString());
 
         
+        if ( ! queryForm.getQ().equalsIgnoreCase(currentQuery)){
+            queryForm.setPageNum(1); 
+            queryForm.setStart(0);
+        }
+        logger.info("QueryForm Q: " + queryForm.getQ());
+        logger.info("currentQuery: " + currentQuery);
+        currentQuery = queryForm.getQ();
+        
         
         SolrDocumentList solrDocumentList = searchService.getResults(queryForm);
         logger.debug("Results: " + solrDocumentList.toString());
@@ -111,18 +119,6 @@ public class SearchController implements ErrorController {
         
         docRoot = props.getPropValue("docRoot");
         logger.debug("DocRoot:::" + docRoot);
-
-        // Check to see if query has changed. If it has, then reset the queryForm.pageNum
-        if (queryForm.getPageNum() == 1) {
-            currentQuery = queryForm.getQ();
-        }else{
-            //check query
-            if (!queryForm.getQ().equals(currentQuery)) {
-                queryForm.setPageNum(1);
-            }
-        }
-        
-        
         
         // get document root directory from properties file
         model.addAttribute("response", solrDocumentList);

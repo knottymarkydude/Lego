@@ -16,7 +16,7 @@
             <!-- Begin Header -->
             <header id="header" th:fragment="header">
                 <a href="/"><img src="img/header/lego-logo-100.jpg" alt="Lego"/></a>
-                
+
                 <div id="sb-search" class="sb-search">
                     <form id="search-form" action="#" th:action="@{/search}" th:object="${queryForm}" method="post">
                         <input class="sb-search-input" placeholder="Enter your search term..." type="text"  th:field="*{q}" name="search" id="search"/>
@@ -43,6 +43,11 @@
                 <ul class="copyright">
                     <li>Wellcome Genome Campus is a division of Genome Research Limited (reg no. 2742969), a charity registered in England with number 1021457.</li>
                 </ul>
+
+                <ul class="sw-version">
+                    Software Version : 0.0.1-BETA | 5th May 2106
+                </ul>
+
             </footer>
         </div>
     </body>
